@@ -10,19 +10,14 @@
 </template>
 
 <script>
-import axios from 'axios';
 export default {
-    data() {
-        return {
-            list: []
+    computed: {
+        list() {
+            return this.$store.state.list;
         }
     },
     created() {
-        axios.get('https://api.hnpwa.com/v0/news/1.json')
-        .then(res => {
-            console.log(res);
-            this.list = res.data;
-        })
+        this.$store.dispatch('FETCH_LIST', 'news');
     }
 }
 </script>
