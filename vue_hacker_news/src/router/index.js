@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import NewsView from '../views/NewsView.vue';
 import AskView from '../views/AskView.vue';
 import JobsView from '../views/JobsView.vue';
+import CommentView from '../views/CommentView.vue';
 
 
 Vue.use(VueRouter);
@@ -27,6 +28,11 @@ const routes = [
     path: '/jobs',
     name: 'jobs',
     component: JobsView
+  },
+  {
+    path: '/comment',
+    name: 'comment',
+    component: CommentView
   }
 ];
 

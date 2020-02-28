@@ -8,5 +8,13 @@ function fetchListItem(pageName) {
     return axios.get(`${config.baseUrl}${pageName}/1.json`);
 }
 
-export {fetchListItem};
+function fetchCommentItem(commentId) {
+    return axios.get(`${config.baseUrl}item/${commentId}.json`);
+}
+
+export {
+    fetchListItem,
+    fetchCommentItem
+};
+ 
 
