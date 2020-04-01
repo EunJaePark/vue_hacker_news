@@ -30,7 +30,7 @@ const routes = [
     component: JobsView
   },
   {
-    path: '/comment',
+    path: '/news/id',
     name: 'comment',
     component: CommentView
   }

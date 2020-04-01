@@ -12,7 +12,7 @@ export default {
         }
     }, 
     created() {
-        this.$store.dispatch('FETCH_COMMENT', 'comment');
+        this.$store.dispatch('FETCH_COMMENT', 'news/id'); 
     }
 }
 </script>
