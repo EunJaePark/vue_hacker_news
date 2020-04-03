@@ -27,8 +27,7 @@ export const store = new Vuex.Store({
         return res;
       })
       .catch(err => {
-        console.log(err);
-        
+        console.log(err);       
       })
     },
     FETCH_COMMENT(context, commId) {

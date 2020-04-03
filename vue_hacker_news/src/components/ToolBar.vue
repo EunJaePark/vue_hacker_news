@@ -1,15 +1,15 @@
 <template>
     <header>
         <router-link
-            :class="{'click': click === 'yes' && index === 1}"
+            :class="{'click': index === 1}"
             @click.native="clickBg(1, 'yes')"
             to="/news">News</router-link>
         <router-link
-            :class="{'click': click === 'yes' && index === 2}"
+            :class="{'click': index === 2}"
             @click.native="clickBg(2, 'yes')"
             to="/Ask">Ask</router-link>
         <router-link 
-            :class="{'click': click === 'yes' && index === 3}"
+            :class="{'click': index === 3}"
             @click.native ="clickBg(3, 'yes')"
             to="/Jobs">Jobs</router-link>
     </header>
@@ -20,15 +20,9 @@ export default {
     data() {
         return {
             index: 1,
-            click: 'no'
+            click: 'yes'
         }
     },
-    // computed: {
-    //     baseIndexClick() {
-    //         this.index = 1
-    //         this.click = 'yes'
-    //     }
-    // },
     methods: {
         clickBg(index, click) {
             this.index = index
