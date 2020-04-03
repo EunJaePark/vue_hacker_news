@@ -8,7 +8,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
   state: {
     list: [],
-    commentlist: {}
+    commentlist: []
   },
   mutations: {
     SET_LIST(state, list) {
@@ -31,18 +31,31 @@ export const store = new Vuex.Store({
         
       })
     },
-    FETCH_Comment(context, commentId) {
-      // return fetchAskItem(askId).then().catch()
-      return fetchCommentItem(commentId)
+    FETCH_COMMENT(context, commId) {
+      fetchCommentItem(commId)
       .then(res => {
-        context.commit('SET_Comment', res.data);
-        return res;
+        context.commit('SET_COMMENT', res.data)
       })
       .catch(err => {
         console.log(err);
         
       })
     }
+
+
+
+    // FETCH_Comment(context, commentId) {
+    //   // return fetchAskItem(askId).then().catch()
+    //   return fetchCommentItem(commentId)
+    //   .then(res => {
+    //     context.commit('SET_COMMENT', res.data);
+    //     return res;
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+        
+    //   })
+    // }
   },
   modules: {
   }
