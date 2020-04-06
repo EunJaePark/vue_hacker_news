@@ -1,5 +1,10 @@
 <template>
     <div class="commentBox">
+      <div class="loadingView">
+          <div class="loadingBar"></div>
+          <span class="loadingText">loading...</span>
+      </div>
+
         <b>by {{ comments.user }}</b>
         <span> - {{ comments.time_ago }}</span>
         <h1>{{ comments.title }}</h1>
@@ -28,12 +33,27 @@ export default {
     created() {
         const commIdNum = this.$route.params.id
         this.$store.dispatch('FETCH_COMMENT', commIdNum); 
+    },
+    mounted() {
+        let loadingView = document.querySelector('.loadingView');
+        let loadingBar = document.querySelector('.loadingBar');
+
+        
+        requestAnimationFrame(function() {
+            setTimeout(function() {
+                loadingBar.style.width = '50%' 
+            }, 0)
+        })
+       
+        setTimeout(function() {
+            loadingView.style.display = 'none'
+        }, 300)
     }
 }
 </script>
 
 <style>
-.commentBox{ padding-top:50px; background-color:rgb(250, 241, 223);  }
+.commentBox{ padding-top:50px; background-color:rgb(250, 241, 223); position:relative; }
 .commentBox > b{ margin-left:50px; color:#353434; }
 .commentBox > span{ color:#353434; }
 .commentBox > h1{ margin-left:50px; color:#353434; }
