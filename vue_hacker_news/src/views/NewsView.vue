@@ -1,17 +1,19 @@
 <template>
+<transition name="fade">
   <ol class="list">
       <div class="loadingView">
           <div class="loadingBar"></div>
           <span class="loadingText">loading...</span>
       </div>
 
-      <li v-for="item in list" v-bind:key="item.id">
+      <li v-for="item in list" v-bind:key="item.id" > 
           <b>{{ item.time_ago }} </b>
           <span>by {{ item.user }}</span> <br/>
           <a v-bind:href="item.url" target="blank">{{ item.title }}</a>
           <router-link :to="`/item/${item.id}`"><span>( {{ item.comments_count }} )</span></router-link>
       </li>
   </ol>
+</transition>
 </template>
 
 <script>
@@ -38,7 +40,8 @@ export default {
         setTimeout(function() {
             loadingView.style.display = 'none'
         }, 300)
-    }
+
+    },
 }
 </script>
 
