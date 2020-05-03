@@ -1,6 +1,6 @@
 <template>
-<transition name="fade">
-  <ol class="list">
+<!-- <transition name="fade"> -->
+  <!-- <ol class="list">
       <div class="loadingView">
           <div class="loadingBar"></div>
           <span class="loadingText">loading...</span>
@@ -12,36 +12,40 @@
           <a v-bind:href="item.url" target="blank">{{ item.title }}</a>
           <router-link :to="`/item/${item.id}`"><span>( {{ item.comments_count }} )</span></router-link>
       </li>
-  </ol>
-</transition>
+  </ol> -->
+<!-- </transition> -->
+    <list-item></list-item>
 </template>
 
 <script>
+import listItem from '../components/ListItem'
+
 export default {
-    computed: {
-        list() {
-            return this.$store.state.list;
-        }
-    },
-    created() {
-        this.$store.dispatch('FETCH_LIST', 'news');
-    },
-    mounted() {
-        let loadingView = document.querySelector('.loadingView');
-        let loadingBar = document.querySelector('.loadingBar');
+    components: { listItem }
+    // computed: {
+    //     list() {
+    //         return this.$store.state.list;
+    //     }
+    // },
+    // created() {
+    //     this.$store.dispatch('FETCH_LIST', 'news');
+    // },
+    // mounted() {
+    //     let loadingView = document.querySelector('.loadingView');
+    //     let loadingBar = document.querySelector('.loadingBar');
 
         
-        requestAnimationFrame(function() {
-            setTimeout(function() {
-                loadingBar.style.width = '50%' 
-            }, 0)
-        })
+    //     requestAnimationFrame(function() {
+    //         setTimeout(function() {
+    //             loadingBar.style.width = '50%' 
+    //         }, 0)
+    //     })
        
-        setTimeout(function() {
-            loadingView.style.display = 'none'
-        }, 300)
+    //     setTimeout(function() {
+    //         loadingView.style.display = 'none'
+    //     }, 300)
 
-    },
+    // },
 }
 </script>
 

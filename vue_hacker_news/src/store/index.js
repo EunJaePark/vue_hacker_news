@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {fetchListItem} from '../api/index.js';
-import {fetchCommentItem} from '../api/index.js';
+import {fetchCommentItem, fetchUserInfo} from '../api/index.js';
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   state: {
     list: [],
-    commentlist: []
+    commentlist: [],
+    user: ''
   },
   mutations: {
     SET_LIST(state, list) {
@@ -16,6 +17,9 @@ export const store = new Vuex.Store({
     },
     SET_COMMENT(state, commentlist) {
       state.commentlist = commentlist;
+    },
+    SET_USER(state, user) {
+      state.user = user;
     }
   },
   actions: {
@@ -30,6 +34,7 @@ export const store = new Vuex.Store({
         console.log(err);       
       })
     },
+    // comments
     FETCH_COMMENT(context, commId) {
       fetchCommentItem(commId)
       .then(res => {
@@ -37,9 +42,22 @@ export const store = new Vuex.Store({
       })
       .catch(err => {
         console.log(err);
-        
+        })
+    },
+
+    // 작성자
+    FETCH_USER(context, userName) {
+      return fetchUserInfo(userName)
+      .then(res => {
+        context.commit('SET_USER', res.data)
+      })
+      .catch(err => {
+        console.log(err);
       })
     }
+    
+
+
 
 
 

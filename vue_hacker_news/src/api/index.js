@@ -12,9 +12,14 @@ function fetchCommentItem(commentId) {
     return axios.get(`${config.baseUrl}item/${commentId}.json`);
 }
 
+function fetchUserInfo(userName) {
+    return axios.get(`${config.baseUrl}user/${userName}.json`);
+}
+
 export {
     fetchListItem,
-    fetchCommentItem
+    fetchCommentItem,
+    fetchUserInfo
 };
  
 

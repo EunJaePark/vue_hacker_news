@@ -1,5 +1,5 @@
 <template>
-  <ol class="list">
+  <!-- <ol class="list">
       <div class="loadingView">
           <div class="loadingBar"></div>
           <span class="loadingText">loading...</span>
@@ -7,41 +7,41 @@
       
       <li v-for="item in list" v-bind:key="item.id">
           <b>{{ item.time_ago }}</b>
-          <!-- <span>{{ item.user }}</span> <br/> -->
+          <span>{{ item.user }}</span> <br/> 
           <a v-bind:href="item.url" target="blank">{{ item.title }}</a>
       </li>
-  </ol>
+  </ol> -->
+  <list-item></list-item>
 </template>
 
 <script>
-import axios from 'axios';
+import listItem from '../components/ListItem'
+
 export default {
-    data() {
-        return {
-            list: []
-        }
-    },
-    created() {
-        axios.get('https://api.hnpwa.com/v0/jobs/1.json')
-        .then(res => {
-            this.list = res.data;
-        })
-    },
-    mounted() {
-        let loadingView = document.querySelector('.loadingView');
-        let loadingBar = document.querySelector('.loadingBar');
+    components: {listItem}
+    // computed: {
+    //     list() {
+    //         return this.$store.state.list;
+    //     }
+    // },
+    // created() {
+    //     this.$store.dispatch('FETCH_LIST', 'jobs');
+    // },
+    // mounted() {
+    //     let loadingView = document.querySelector('.loadingView');
+    //     let loadingBar = document.querySelector('.loadingBar');
 
         
-        requestAnimationFrame(function() {
-            setTimeout(function() {
-                loadingBar.style.width = '50%' 
-            }, 0)
-        })
+    //     requestAnimationFrame(function() {
+    //         setTimeout(function() {
+    //             loadingBar.style.width = '50%' 
+    //         }, 0)
+    //     })
        
-        setTimeout(function() {
-            loadingView.style.display = 'none'
-        }, 300)
-    }
+    //     setTimeout(function() {
+    //         loadingView.style.display = 'none'
+    //     }, 300)
+    // }
 }
 </script>
 

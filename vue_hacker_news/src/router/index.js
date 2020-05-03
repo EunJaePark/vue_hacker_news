@@ -4,6 +4,7 @@ import NewsView from '../views/NewsView.vue';
 import AskView from '../views/AskView.vue';
 import JobsView from '../views/JobsView.vue';
 import CommentView from '../views/CommentView.vue';
+import UserView from '../views/UserView.vue';
 
 
 Vue.use(VueRouter);
@@ -11,7 +12,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'home',
+    name: 'news',
     component: NewsView
   },
   {
@@ -36,6 +37,11 @@ const routes = [
     name: 'comment',
     component: CommentView
   },
+  { // 작성자 이름 클릭시 연결되는 루트.
+    path: '/user/:id',
+    name: 'user',
+    component: UserView
+  }
 ];
 
 export const router = new VueRouter({routes});
